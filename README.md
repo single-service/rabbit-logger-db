@@ -16,6 +16,7 @@ Rabbit Logger Service — это универсальный сервис для 
 -------------------------------
 Пример `docker-compose.yml` приведен ниже:
 
+```
 version: "3.8"
 
 services:
@@ -40,6 +41,7 @@ services:
 volumes:
   clickhouse_data:
   rabbitmq_data:
+```
 
 Переменные окружения
 ---------------------
@@ -54,6 +56,7 @@ volumes:
 
 Также вы можете добавить визуальное отображение для ваших логов и apm, добавив в docker-compose.yml:
 ---------------------
+```
   db:
     image: postgres
     volumes:
@@ -86,6 +89,7 @@ volumes:
 
 volumes:
   postgres_data:
+```
 ---------------------
 
 ### PostgreSQL (для Metabase)
