@@ -1,0 +1,1 @@
+* * * * * /usr/local/bin/python3 /app/clean_logs.py >> /var/log/cron.log 2>&1
