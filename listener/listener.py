@@ -131,8 +131,8 @@ class RabbitMQListener:
         """Начало прослушивания очередей."""
         try:
             # Добавляем обработчики для каждой очереди
-            self.channel.basic_consume(queue="logs", on_message_callback=self.callback_logs)
-            self.channel.basic_consume(queue="apm", on_message_callback=self.callback_apm)
+            self.channel.basic_consume(queue="logs", on_message_callback=self.callback_logs, auto_ack=True)
+            self.channel.basic_consume(queue="apm", on_message_callback=self.callback_apm, auto_ack=True)
 
             logger.info("Слушаю очереди: logs, apm")
             self.channel.start_consuming()
