@@ -23,32 +23,25 @@ services:
   rabbit-logger:
     build: .
     ports:
-      - "8123:8123"   # ClickHouse HTTP-interface
-      - "9000:9000"   # ClickHouse TCP-interface
-      - "5672:5672"   # RabbitMQ AMQP
+      - "8123:8123"     # ClickHouse HTTP-interface
+      - "9000:9000"     # ClickHouse TCP-interface
+      - "5672:5672"     # RabbitMQ AMQP
+      - "9999:9999/udp" # UDP
     environment:
-      - RABBIT_PORT=5672
-      - RABBITMQ_DEFAULT_USER=user
-      - RABBITMQ_DEFAULT_PASS=password
       - CLICKHOUSE_USER=clickhouse-user
       - CLICKHOUSE_PASSWORD=secret-password
       - LOG_RETENTION_DAYS=30
       - APM_RETENTION_DAYS=30
     volumes:
       - clickhouse_data:/var/lib/clickhouse
-      - rabbitmq_data:/var/lib/rabbitmq
 
 volumes:
   clickhouse_data:
-  rabbitmq_data:
 ```
 
 Переменные окружения
 ---------------------
 ### Rabbit-logger
-- RABBIT_PORT: Порт RabbitMQ (по умолчанию 5672).
-- RABBITMQ_DEFAULT_USER: Имя пользователя для RabbitMQ.
-- RABBITMQ_DEFAULT_PASS: Пароль пользователя для RabbitMQ.
 - CLICKHOUSE_USER: Имя пользователя для ClickHouse.
 - CLICKHOUSE_PASSWORD: Пароль для пользователя ClickHouse.
 - LOG_RETENTION_DAYS: Число дней для хранения логов (по умолчанию 30).

@@ -6,7 +6,6 @@ RUN apt-get update && apt-get install -y \
     nginx \
     default-jre-headless \
     curl wget \
-    rabbitmq-server \
     cron \
     && apt-get clean
 
@@ -66,7 +65,6 @@ RUN chmod +x /usr/local/bin/init-clickhouse.sh
 
 # Указываем тома для сохранения данных
 VOLUME /var/lib/clickhouse
-VOLUME /var/lib/rabbitmq
 
 # Указываем Supervisor как команду запуска
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
